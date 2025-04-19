@@ -1,0 +1,434 @@
+{
+
+  "patients": [
+    {
+      "id": 1,
+      "dossier": 1,
+      "idUser": 101,
+      "username": "Doe",
+      "nss": 123456789,
+      "naissance": "1990-01-01",
+      "adresse": "123 Main Street, Cityville",
+      "tel": "123-456-7890",
+      "mutuelle": "HealthCare Plus",
+      "nom": "John",
+      "prenom": "Doe",
+      "qrcode": ""
+    },
+    {
+      "id": 2,
+      "dossier": 2,
+      "idUser": 102,
+      "username": "Smith",
+      "nss": 987654321,
+      "naissance": "1985-05-15",
+      "adresse": "456 Elm Street, Townsville",
+      "tel": "987-654-3210",
+      "mutuelle": "Premium Health",
+      "nom": "Jane",
+      "prenom": "Smith",
+      "qrcode": ""
+    },
+    {
+      "id": 3,
+      "dossier": 3,
+      "idUser": 103,
+      "username": "Brown",
+      "nss": 456123789,
+      "naissance": "1995-03-20",
+      "adresse": "789 Oak Avenue, Villageton",
+      "tel": "456-789-1234",
+      "mutuelle": "Standard Care",
+      "nom": "Mike",
+      "prenom": "Brown",
+      "qrcode": ""
+    },
+    {
+      "id": 4,
+      "dossier": 4,
+      "idUser": 104,
+      "username": "Johnson",
+      "nss": 321654987,
+      "naissance": "1988-07-11",
+      "adresse": "321 Pine Lane, Suburbia",
+      "tel": "321-654-9870",
+      "mutuelle": "Comprehensive Cover",
+      "nom": "Emily",
+      "prenom": "Johnson",
+      "qrcode": ""
+    },
+    {
+      "id": 5,
+      "dossier": 5,
+      "idUser": 105,
+      "username": "Taylor",
+      "nss": 654789321,
+      "naissance": "1992-12-03",
+      "adresse": "654 Maple Drive, Metropolis",
+      "tel": "654-789-3214",
+      "mutuelle": "Basic Health Plan",
+      "nom": "Chris",
+      "prenom": "Taylor",
+      "qrcode": ""
+    },
+    {
+      "id": 6,
+      "dossier": 6,
+      "idUser": 106,
+      "username": "Anderson",
+      "nss": 789123456,
+      "naissance": "1980-04-25",
+      "adresse": "789 Cedar Court, Riverwood",
+      "tel": "789-123-4567",
+      "mutuelle": "HealthSecure",
+      "nom": "Sarah",
+      "prenom": "Anderson",
+      "qrcode": ""
+    },
+    {
+      "id": 7,
+      "dossier": 7,
+      "idUser": 107,
+      "username": "Moore",
+      "nss": 123789456,
+      "naissance": "1998-09-18",
+      "adresse": "123 Birch Lane, Highland",
+      "tel": "123-789-4561",
+      "mutuelle": "Wellness Plan",
+      "nom": "James",
+      "prenom": "Moore",
+      "qrcode": ""
+    },
+    {
+      "id": 8,
+      "dossier": 8,
+      "idUser": 108,
+      "username": "Thomas",
+      "nss": 987321654,
+      "naissance": "1983-02-10",
+      "adresse": "456 Spruce Road, Valleyview",
+      "tel": "987-321-6543",
+      "mutuelle": "Optimum Care",
+      "nom": "Linda",
+      "prenom": "Thomas",
+      "qrcode": ""
+    },
+    {
+      "id": 9,
+      "dossier": 9,
+      "idUser": 109,
+      "username": "Martin",
+      "nss": 321987654,
+      "naissance": "1991-11-30",
+      "adresse": "321 Redwood Avenue, Forest Hill",
+      "tel": "321-987-6543",
+      "mutuelle": "Prime Health",
+      "nom": "Robert",
+      "prenom": "Martin",
+      "qrcode": ""
+    },
+    {
+      "id": 10,
+      "dossier": 10,
+      "idUser": 110,
+      "username": "Garcia",
+      "nss": 654321987,
+      "naissance": "1993-06-22",
+      "adresse": "654 Willow Way, Seaside",
+      "tel": "654-321-9876",
+      "mutuelle": "SecureLife",
+      "nom": "Anna",
+      "prenom": "Garcia",
+      "qrcode": ""
+    }
+  ],
+
+  "bilanMedecin": {
+
+    "id": 5,
+    "status": "Pending",
+    "requestedAt": "2024-12-22",
+
+    "tests": [
+      {
+        "id": 1,
+        "testName": "Taux de glycémie",
+        "result": null
+      },
+      {
+        "id": 2,
+        "testName": "Taux de cholestérol",
+        "result": null
+      },
+      {
+        "id": 3,
+        "testName": "Créatinine sanguine",
+        "result": null
+      },
+      {
+        "id": 4,
+        "testName": "Niveau d'hémoglobine",
+        "result": null
+      },
+      {
+        "id": 5,
+        "testName": "Taux d'urée",
+        "result": null
+      }
+    ]
+  },
+  
+  "DPIs": [
+    {
+      "id": 1,
+      "dateMaj": "2024-12-01",
+      "dateAdmission": "2024-11-15",
+      "dateSortie": "2024-12-10",
+      "antecedants": ["Diabète", "Hypertension"],
+      "ordonnances": [
+        {
+          "id": 21,
+          "dossier": 11,
+          "date": "2024-12-01",
+          "duree": "10 jours",
+          "etat": true,
+          "medicaments": [
+            {
+              "id": 31,
+              "id_ordonnance": 21,
+              "nom": "Metformine",
+              "dose": "500mg",
+              "frequence": "2 fois par jour"
+            },
+            {
+              "id": 32,
+              "id_ordonnance": 21,
+              "nom": "Amlodipine",
+              "dose": "5mg",
+              "frequence": "1 fois par jour"
+            }
+          ]
+        },
+        {
+          "id": 22,
+          "dossier": 11,
+          "date": "2024-12-05",
+          "duree": "7 jours",
+          "etat": false,
+          "medicaments": [
+            {
+              "id": 33,
+              "id_ordonnance": 22,
+              "nom": "Ibuprofène",
+              "dose": "200mg",
+              "frequence": "3 fois par jour"
+            }
+          ]
+        }
+      ],
+      "soins": [
+        {
+          "id": 41,
+          "subject": "Pansement",
+          "description": "Changement de pansement sur plaie superficielle",
+          "date": "2024-12-03"
+        }
+      ]
+    },
+    {
+      "id": 2,
+      "dateMaj": "2024-12-20",
+      "dateAdmission": "2024-12-10",
+      "dateSortie": "2024-12-15",
+      "antecedants": ["Asthme"],
+      "ordonnances": [
+        {
+          "id": 23,
+          "dossier": 12,
+          "date": "2024-12-11",
+          "duree": "5 jours",
+          "etat": true,
+          "medicaments": [
+            {
+              "id": 34,
+              "id_ordonnance": 23,
+              "nom": "Salbutamol",
+              "dose": "2 inhalations",
+              "frequence": "au besoin"
+            }
+          ]
+        },
+        {
+          "id": 24,
+          "dossier": 12,
+          "date": "2024-12-13",
+          "duree": "10 jours",
+          "etat": false,
+          "medicaments": [
+            {
+              "id": 35,
+              "id_ordonnance": 24,
+              "nom": "Montélukast",
+              "dose": "10mg",
+              "frequence": "1 fois par jour"
+            },
+            {
+              "id": 36,
+              "id_ordonnance": 24,
+              "nom": "Fluticasone",
+              "dose": "2 inhalations",
+              "frequence": "2 fois par jour"
+            }
+          ]
+        }
+      ],
+      "soins": [
+        {
+          "id": 42,
+          "subject": "Spirométrie",
+          "description": "Test de fonction pulmonaire",
+          "date": "2024-12-14"
+        }
+      ]
+    },
+    {
+      "id": 3,
+      "dateMaj": "2024-12-25",
+      "dateAdmission": "2024-12-20",
+      "dateSortie": "2024-12-23",
+      "antecedants": ["Allergie au pollen"],
+      "ordonnances": [
+        {
+          "id": 25,
+          "dossier": 13,
+          "date": "2024-12-21",
+          "duree": "3 jours",
+          "etat": true,
+          "medicaments": [
+            {
+              "id": 37,
+              "id_ordonnance": 25,
+              "nom": "Cétirizine",
+              "dose": "10mg",
+              "frequence": "1 fois par jour"
+            }
+          ]
+        },
+        {
+          "id": 26,
+          "dossier": 13,
+          "date": "2024-12-22",
+          "duree": "5 jours",
+          "etat": false,
+          "medicaments": [
+            {
+              "id": 38,
+              "id_ordonnance": 26,
+              "nom": "Fluticasone",
+              "dose": "1 spray",
+              "frequence": "2 fois par jour"
+            }
+          ]
+        }
+      ],
+      "soins": [
+        {
+          "id": 43,
+          "subject": "Test allergologique",
+          "description": "Analyse de sensibilité allergique",
+          "date": "2024-12-22"
+        }
+      ]
+    }
+  ],
+
+  "listeBilan": [
+    {
+      "id": 1,
+      "idMed": 101,
+      "idConsul": 202,
+      "type": "Biologique",
+      "rempli": true,
+      "date": "2024-01-15",
+      "tests": [
+        {
+          "id": 1,
+          "testName": "Taux de glycémie",
+          "result": "5.6 mmol/L"
+        },
+        {
+          "id": 2,
+          "testName": "Taux de cholestérol",
+          "result": "190 mg/dL"
+        }
+      ]
+    },
+    {
+      "id": 2,
+      "idMed": 102,
+      "idConsul": 203,
+      "type": "Radiologique",
+      "rempli": true,
+      "date": "2024-03-20",
+      "tests": [
+        {
+          "id": 3,
+          "testName": "Radiographie thoracique",
+          "result": "Normal"
+        }
+      ]
+    },
+    {
+      "id": 3,
+      "idMed": 103,
+      "idConsul": 204,
+      "type": "Biologique",
+      "rempli": true,
+      "date": "2024-05-12",
+      "tests": [
+        {
+          "id": 4,
+          "testName": "Créatinine sanguine",
+          "result": "0.9 mg/dL"
+        },
+        {
+          "id": 5,
+          "testName": "Niveau d'hémoglobine",
+          "result": "13.5 g/dL"
+        }
+      ]
+    },
+    {
+      "id": 4,
+      "idMed": 104,
+      "idConsul": 205,
+      "type": "Radiologique",
+      "rempli": true,
+      "date": "2024-07-03",
+      "tests": [
+        {
+          "id": 6,
+          "testName": "Échographie abdominale",
+          "result": "Normal"
+        }
+      ]
+    },
+    {
+      "id": 5,
+      "idMed": 105,
+      "idConsul": 206,
+      "type": "Biologique",
+      "rempli": false,
+      "date": "2024-09-18",
+      "tests": [
+        {
+          "id": 6,
+          "testName": "Échographie abdominale",
+          "result": "Normal"
+        }
+      ]
+    }
+  ]
+  
+  
+}

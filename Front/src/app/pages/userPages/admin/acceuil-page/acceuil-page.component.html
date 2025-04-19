@@ -1,0 +1,84 @@
+<app-header (changeDashEvent)="updateDashboardVisibility($event)" />
+
+<div class="content">
+
+  <div class="empty-dash">
+    <app-dash-board *ngIf="isDashBoardVisible"></app-dash-board>
+  </div>
+
+
+  <div class="container">
+
+    @defer {
+
+      <h1>Bienvenue chers admin {{user.first_name}} {{user.last_name}}</h1>
+
+      <div class="card2" >
+        <img src="../../../../../assets/icons/new_DPI.png" width="100px" >   
+
+        <button id="create-dpi-btn" (click)="isCreeDPI.set(true)">  
+          <p>Créer DPI</p>    
+        </button>
+
+      </div>
+
+      @if (isCreeDPI()) {
+
+        <div class="grey-div" (click)="annuler($event)">
+
+          <div class="card3">
+
+            <h2>Créer DPI d'un patient</h2>
+
+            <label>Nss:</label>
+            <input id="nss" type="text" placeholder="NSS" [(ngModel)]="patientData.nss"> 
+
+            <label>Nom</label>
+            <input id="nom" type="text" placeholder="nom" [(ngModel)]="patientData.user.first_name"> 
+
+            <label>Prénom</label>
+            <input id="prenom" type="text" placeholder="prénom" [(ngModel)]="patientData.user.last_name">
+
+            <label>Nom d'utilisateur</label>
+            <input id="user" type="text" placeholder="nom d'utilisateur" [(ngModel)]="patientData.user.username">
+
+            <label>Addresse</label>
+            <input id="adresse" type="text" placeholder="Addresse" [(ngModel)]="patientData.address">
+
+            <label>Date de naissance</label>
+            <input id="date_naissance" type="date" [(ngModel)]="patientData.date_naissance">
+
+            <label>numero telephone</label>
+            <input id="num" type="tel" placeholder="téléphone" [(ngModel)]="patientData.phone_number">
+
+            <label>mutuelle</label>
+            <input id="mutuelle" type="tel" placeholder="téléphone" [(ngModel)]="patientData.mutuelle">
+
+            <div class="container2">
+
+              <button id="submit-btn" (click)="creerDPI()">  
+                créer DPI    
+              </button>
+
+              <button class="annuler" (click)="annuler($event)">
+                annuler
+              </button>
+
+            </div>
+
+          </div>
+
+          
+
+        </div>
+
+      }
+    
+    } @loading (minimum 0.5s) {
+      <div class="center-div">
+        <app-loading-screen />
+      </div>
+    }
+
+  </div>
+</div>

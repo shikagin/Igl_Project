@@ -1,0 +1,83 @@
+<app-header (changeDashEvent)="updateDashboardVisibility($event)" />
+
+<div class="content">
+
+  <div class="empty-dash">
+    <app-dash-board *ngIf="isDashBoardVisible"></app-dash-board>
+  </div>
+
+  <div class="container">
+
+    @defer { <!--Defer is when component needs to load so we show something while loading-->
+
+      <h2>Saisie {{user.role === "Radiologue" ? "de compte rendue": "des résultats de bilan biologique"}} </h2>
+      <h4>Nombre de bilans non remplis pour le patient: {{ !length ? 'Aucune, vous ètes à jour avec ce patient !!' : length}}</h4>
+
+      @if (length) {
+
+        <div class="card">
+
+          @if(user.role === "Radiologue"){
+
+            <h3>Rédaction de compte rendu</h3>
+
+            <div class="inputs-div">
+              <label> Compte Rendu </label>
+              <textarea rows="4" type="text" placeholder="Résumé de la radio..." [(ngModel)]="compteRendu.compte_rendu"></textarea>
+            </div>
+
+          } @else {
+
+            <h3>Rédaction des résultats des tests</h3>
+            @for (item of listTestsBilan.resultats_analytiques ; track item.id) {
+  
+              <div class="inputs-div">
+                <label> {{item.parametre}} ({{item.unite}}): </label>
+                <input type="text" [placeholder]="item.unite" [(ngModel)]="item.value">
+              </div>
+      
+            }
+
+          }
+
+  
+        </div>
+  
+        <div class="card">
+          <h3>Jointure {{user.role === "Radiologue" ? "de la radio": "de graphe"}}</h3>
+  
+          @if (selectedFile === null) {
+            <button class="card-button" (click)="triggerFileInput()">+</button>
+          } @else {
+            
+            <img [src]="previewUrl" alt="photo preview" width="400px">
+            <button class="card-button" (click)="removeFile()">-</button>
+          }
+  
+        </div>
+  
+        
+        <button class="sub-button" (click)="enregistrerBilan()">Envoyer bilan</button>
+  
+        <input 
+          type="file" 
+          #fileInput 
+          style="display: none;" 
+          (change)="onFileSelected($event)" 
+          accept=".jpg,.jpeg,.png" 
+        />
+
+      }
+
+
+  
+      
+    } @loading (minimum 1s) { <!--Nesstennaw minimum 1s besh naffichiw @defer-->
+      <div class="center-div">
+        <app-loading-screen />
+      </div>
+    }
+  
+  </div>
+</div>
+

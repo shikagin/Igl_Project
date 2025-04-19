@@ -1,0 +1,77 @@
+<app-header (changeDashEvent)="updateDashboardVisibility($event)" />
+
+<div class="content">
+  
+  <div class="empty-dash">
+    <app-dash-board *ngIf="isDashBoardVisible"></app-dash-board>
+  </div>
+
+  <div class="container">
+
+    @defer {
+
+      <h2>Bilan {{isBio ? "biologique":"radiologique"}}: {{isBio ? bilanBio.date_creation : compteRendu.date_creation}}</h2>
+
+      @if(isBio){
+
+        <h2 style="margin-top: -20px; color: #3958B3;">Statut: {{bilanBio.rempli ? "Rempli !":"En attente"}}</h2>
+
+        <div class="card">
+  
+          <h2 style="margin: auto;">liste des tests demandés</h2>
+  
+          @for (item of bilanBio.resultats_analytiques; track item.id) {
+  
+            <div class="container2">
+  
+              <div class="horiz-div">
+                <label>Demande de test: </label>
+                
+                @if (bilanBio.rempli) {
+                  <label>{{item.parametre}}</label>
+                } @else {
+  
+                  @if (user.role === "Patient" || isFilled) {<input readonly type="text" placeholder="ex:Cholesterol,niveau d'urée..." [(ngModel)]="item.parametre">}
+                  @else {<input type="text" placeholder="ex:Cholesterol,niveau d'urée..." [(ngModel)]="item.parametre">}
+  
+                  @if (user.role === "Patient" || isFilled) {<input readonly type="text" placeholder="mg/l, g, ..." [(ngModel)]="item.unite">}
+                  @else {<input type="text" placeholder="mg/l, g, ..." [(ngModel)]="item.unite">}
+  
+
+                  @if (bilanBio.resultats_analytiques.indexOf(item) != bilanBio.resultats_analytiques.length - 1) { <button (click)="removeTest(bilanBio.resultats_analytiques.indexOf(item))" *ngIf="!isFilled && user.role!='Patient'" >-</button> }
+                }
+              </div>
+  
+              <label>Résultat de test: {{bilanBio.rempli? item.value : "pas encore soumis"}}</label>
+  
+            </div>
+  
+          }
+  
+          <button *ngIf="!isFilled && user.role!='Patient'" style="margin: auto;" (click)="addTest()">+</button>
+        </div>
+  
+        <button *ngIf="!isFilled && user.role!='Patient'" style="margin: auto;" (click)="patchBilan()">Envoyer</button>
+
+      }@else {
+
+        <h2 style="margin-top: -20px; color: #3958B3;">Statut: {{compteRendu.rempli ? "Rempli !":"En attente"}}</h2>
+
+        <div class="card">
+          <label>Compte rendu</label>
+          <textarea rows="5" [(ngModel)]="compteRendu.compte_rendu" readonly [(ngModel)]="compteRendu.compte_rendu" [placeholder]="!compteRendu.rempli ?'Pas encore rempli':''"></textarea>
+        </div>
+      }
+
+    } @loading(minimum 1.5s) {
+
+      <div class="center-div">
+        <app-loading-screen />
+      </div>
+
+    }
+
+  </div>
+
+
+</div>

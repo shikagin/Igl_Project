@@ -1,0 +1,119 @@
+<app-header (changeDashEvent)="updateDashboardVisibility($event)" />
+
+<div class="content">
+  
+  <div class="empty-dash">
+    <app-dash-board *ngIf="isDashBoardVisible"></app-dash-board>
+  </div>
+
+  <div class="container">
+
+    @defer {
+
+      @if ( !listeBilanBio.length && !listecompteRendu.length ) { <!--Liste rahi fargha-->
+
+        <div class="center-div">
+          <img src="../../../../../assets/images/Task_empty.png" width="280px" >
+          <h3>Aucun bilan trouvé</h3>
+          <h4>{{user.role === "Medcin" ? "Vous pouvez créer votre premier bilan ici":"Attendez votre medecin crée un bilan pour vous"}}</h4>
+          <button *ngIf="user.role === 'Medcin'" (click)="isAjoutBilan = true" style="margin: auto;">Ajouter bilan</button>
+        </div>
+
+      } @else {
+
+        <h2>Liste des bilans de patient {{patient.user.first_name}} {{patient.user.last_name}}:</h2>
+
+        <button *ngIf="user.role === 'Medcin'" (click)="isAjoutBilan = true" style="margin: auto;">Ajouter bilan</button>
+
+        <h2 *ngIf="listeBilanBio.length">Bilans Biologiques</h2>
+
+        <div class="container-invert">
+
+          @for (item of listeBilanBio; track item.id) { <!--For each patient ndirou ceci-->
+
+            <div class="item" (click)="goToBilan(item.id, true)">
+        
+              <div class="profile">
+                <h3>Bilan ID: {{ item.id }}</h3>
+                <h4>créé le: {{ item.date_creation }} </h4>
+              </div>
+                
+              <div class="empty-div"></div>
+  
+              <p>{{item.resultats_analytiques.length === 0 ? "Pas encore rempli": (item.rempli ? "Résultat reçu" : "en attente")}}</p>
+            </div>
+          }
+          
+        </div>
+
+        <h2 *ngIf="listecompteRendu.length">Bilans Radiologiques</h2>
+
+        <div class="container-invert">
+
+          @for (item of listecompteRendu; track item.id) { <!--For each patient ndirou ceci-->
+
+            <div class="item" (click)="goToBilan(item.id, false)">
+        
+              <div class="profile">
+                <h3>Bilan ID: {{ item.id }}</h3>
+                <h4>créé le: {{ item.date_creation }} </h4>
+              </div>
+                
+              <div class="empty-div"></div>
+  
+              <p>{{item.rempli ? "Résultat reçu" : "en attente"}}</p>
+            </div>
+          }
+          
+        </div>
+
+        @if (isAjoutBilan) {
+
+          <div class="grey-div" (click)="annuler($event)">
+
+            <div class="card">
+
+              <div class="horiz">
+
+                <h4>Type de bilan: </h4>
+
+                <select [(ngModel)]="newBilan.typeBilan">
+                  <option value="BIO">Biologique</option>
+                  <option value="RAD">Radiologique</option>
+                </select>
+
+              </div>
+
+              <div class="horiz">
+
+                <h4>Description: </h4>
+                <input type="text" [(ngModel)]="newBilan.description">
+
+              </div>
+
+              <div class="horiz">
+                <button class="annuler" (click)="annuler($event)">Annuler</button>
+                <button (click)="ajouterBilan()">Créer bilan</button>
+              </div>
+              
+            </div>
+
+          </div>
+
+
+        }
+
+      }
+
+    } @loading(minimum 1s) {
+
+      <div class="center-div">
+        <app-loading-screen />
+      </div>
+
+    }
+
+  </div>
+
+
+</div>
